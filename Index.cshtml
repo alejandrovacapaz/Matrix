@@ -1,0 +1,26 @@
+﻿@page
+@model Matrix.IndexModel
+@{
+}
+<header>
+    <div class="content-wrapper">
+        <div class="float-left">
+            <p class="site-title">
+                <a href="~/">File Upload</a>
+            </p>
+        </div>
+    </div>
+</header>
+<div id="body">
+    <form name="form1" method="post" action="upload/matrix" enctype="multipart/form-data">
+        <div>
+            <label>
+                Browse File
+            </label>
+            <input name="myFile" type="file" />
+        </div>
+        <div>
+            <input type="submit" value="Upload" />
+        </div>
+    </form>
+</div>

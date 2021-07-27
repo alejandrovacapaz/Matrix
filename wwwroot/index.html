@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Indications:</h1>
+
+    <h2> 1.- Choose the file for the matrix and upload it by pressing "Upload Matrix" (.txt file, each row should be a row for the matrix)</h2>
+
+    <p>
+        <input type="file" name="matrix" id="matrix">
+        <button onclick="javascript:upload('matrix')" name="submit">Upload Matrix</button>
+    </p>
+
+    <h2> 2.- Choose the file for the word stream and upload it by pressing "Upload Stream", after this the words of the stream word will be searched automatically and
+        results displayed in the result section (.txt file, each row should be a word of the word stream)
+    </h2>
+
+    <p>
+        <input type="file" name="stream" id="stream">
+        <button onclick="javascript:upload('stream')" name="submit">Upload Stream</button>
+    </p>
+
+    <h1>Results:</h1>
+    <p><label style="font-size: 16px; font-weight:bold" id="response" name="response"></label> </p>
+
+    <script>
+        function upload(element) {
+            var data = new FormData();
+            data.append('file', document.getElementById(element).files[0]);
+
+            fetch('https://localhost:44360/upload/' + element, {
+                method: 'POST',
+                body: data
+            }).then((response) => response.json())
+                .then((response) => {
+                    return response;
+                })
+                .then((response) => {
+                    document.getElementById("response").innerHTML = response;
+                });
+        };
+    </script>
+</body>
+</html>
